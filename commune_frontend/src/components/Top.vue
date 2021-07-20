@@ -7,9 +7,10 @@
             v-for="group in groups"
             :key="group.id"
             cols="4"
+            :groups="groups"
           >
-            <v-card height="200">
-              <v-card-title>{{ group.name }}</v-card-title>
+            <v-card height="200" @click="showGroup">
+              <v-card-title >{{ group.name }}</v-card-title>
               <v-card-text>{{ group.word }}</v-card-text>
             </v-card>
           </v-col>
@@ -17,6 +18,7 @@
       </v-container>
     </v-main>
   </div>
+  
 </template>
 
 <script>
@@ -32,6 +34,10 @@ export default {
   },
   methods: {
     ...mapActions("groups", ["fetchGroups"]),
+    showGroup({ event }) {
+      alert("バグ")
+      console.log(event)
+    },
   },
 };
 </script>
