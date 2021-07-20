@@ -8,13 +8,13 @@
       </ul>
     <button type="submit" @click="fetchGroups()">fetchGroups</button>
 
-    
+
     <TopDetails />
   </div>
 </template>
 
 <script>
-import axios from 'axios';  // axiosをインポートする
+import { mapGetters, mapActions } from 'vuex';
 import TopDetails from './TopDetails.vue';
 
 export default {
@@ -22,21 +22,11 @@ export default {
   components: {
     TopDetails,
   },
-  data: () => ({
-    groups: []
-  }),
+  computed: {
+    ...mapGetters('groups', ['groups']),
+  },
   methods: {
-    fetchGroups() {
-      // GETリクエストを送信し、取得データをgroups変数に代入する
-      axios
-        .get('http://localhost:3000/groups')
-        .then(response => {
-          this.groups = response.data;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
-    }
+    ...mapActions('groups', ['fetchGroups'])
+  },
 };
 </script>

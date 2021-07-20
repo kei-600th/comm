@@ -12,24 +12,15 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'TopDetails',
-  data: () => ({
-    groups: [],
-  }),
+  computed: {
+    ...mapGetters('groups', ['groups'])
+  },
   methods: {
-    fetchGroups() {
-      axios
-        .get('http://localhost:3000/groups')
-        .then((response) => {
-          this.groups = response.data;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    },
+    ...mapActions('groups', ['fetchGroups'])
   },
 };
 </script>
