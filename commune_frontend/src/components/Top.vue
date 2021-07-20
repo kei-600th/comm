@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <v-main>
       <v-container>
         <v-row>
@@ -18,21 +17,19 @@
         </v-row>
       </v-container>
     </v-main>
-
-
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'Top',
+  name: "Top",
   computed: {
-    ...mapGetters('groups', ['groups']),
+    ...mapGetters("groups", ["groups"]),
   },
   methods: {
-    ...mapActions('groups', ['fetchGroups'])
+    ...mapActions("groups", ["fetchGroups"]),
   },
 };
 </script>

@@ -12,15 +12,15 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'TopDetails',
+  name: "TopDetails",
   computed: {
-    ...mapGetters('groups', ['groups'])
+    ...mapGetters("groups", ["groups"]),
   },
   methods: {
-    ...mapActions('groups', ['fetchGroups'])
+    ...mapActions("groups", ["fetchGroups"]),
   },
 };
 </script>
