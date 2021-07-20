@@ -1,17 +1,27 @@
 <template>
   <div>
     <h1>top</h1>
-    <p>groups:</p>
-    <p>{{ groups }}</p>
+      <ul>
+        <li v-for="group in groups" :key="group.id">
+          {{ group.name }}
+        </li>
+      </ul>
     <button type="submit" @click="fetchGroups()">fetchGroups</button>
+
+    
+    <TopDetails />
   </div>
 </template>
 
 <script>
 import axios from 'axios';  // axiosをインポートする
+import TopDetails from './TopDetails.vue';
 
 export default {
   name: 'Top',
+  components: {
+    TopDetails,
+  },
   data: () => ({
     groups: []
   }),
