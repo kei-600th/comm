@@ -5,9 +5,8 @@
         <v-row>
           <v-col
             v-for="group in groups"
-            :key="group"
+            :key="group.id"
             cols="4"
-            @change="fetchGroups"
           >
             <v-card height="200">
               <v-card-title>{{ group.name }}</v-card-title>
@@ -27,6 +26,9 @@ export default {
   name: "Top",
   computed: {
     ...mapGetters("groups", ["groups"]),
+  },
+  created() {
+    this.fetchGroups();
   },
   methods: {
     ...mapActions("groups", ["fetchGroups"]),
