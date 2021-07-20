@@ -5,11 +5,15 @@
       <v-container>
         <v-row>
           <v-col
-            v-for="n in 24"
-            :key="n"
+            v-for="group in groups"
+            :key="group"
             cols="4"
+            @change="fetchGroups"
           >
-            <v-card height="200"></v-card>
+            <v-card height="200">
+              <v-card-title>{{ group.name }}</v-card-title>
+              <v-card-text>{{ group.word }}</v-card-text>
+            </v-card>
           </v-col>
         </v-row>
       </v-container>
