@@ -9,7 +9,7 @@
             cols="4"
             :groups="groups"
           >
-            <v-card height="200" @click="showGroup">
+            <v-card height="200" @click="showGroup(group)">
               <v-card-title >{{ group.name }}</v-card-title>
               <v-card-text>{{ group.word }}</v-card-text>
             </v-card>
@@ -34,9 +34,8 @@ export default {
   },
   methods: {
     ...mapActions("groups", ["fetchGroups"]),
-    showGroup({ event }) {
-      alert("バグ")
-      console.log(event)
+    showGroup(event) {
+      console.log(event.name)
     },
   },
 };
