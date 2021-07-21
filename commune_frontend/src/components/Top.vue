@@ -17,6 +17,10 @@
         </v-row>
       </v-container>
     </v-main>
+
+    <v-dialog :value="dialogMessage !== ''">
+      <h1>{{ dialogMessage }}</h1>
+    </v-dialog>
   </div>
   
 </template>
@@ -26,6 +30,9 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Top",
+  data: () => ({
+    dialogMessage: '',
+  }),
   computed: {
     ...mapGetters("groups", ["groups"]),
   },
@@ -34,8 +41,8 @@ export default {
   },
   methods: {
     ...mapActions("groups", ["fetchGroups"]),
-    showGroup(event) {
-      console.log(event.name)
+    showGroup(group) {
+      this.dialogMessage = group.name
     },
   },
 };
