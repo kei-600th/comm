@@ -23,8 +23,9 @@ export default {
     ...mapGetters('groups', ['group']),
   },
   methods: {
-    ...mapActions('groups', ['setGroup']),
+    ...mapActions('groups', ['setGroup', 'setEditMode']),
     closeDialog() {
+      this.setEditMode(false);
       this.setGroup(null);
     },
   },

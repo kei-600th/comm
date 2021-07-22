@@ -19,8 +19,8 @@
     </v-main>
 
     <v-dialog :value="group !== null">
-      <TopDetailDialog v-if="group !== null" />
-      <GroupFormDialog v-if="group !== null" />
+      <TopDetailDialog v-if="group !== null && !isEditMode" />
+      <GroupFormDialog v-if="group !== null && isEditMode" />
     </v-dialog>
 
     <v-btn
@@ -52,18 +52,19 @@ export default {
   data: () => ({
   }),
   computed: {
-    ...mapGetters("groups", ["groups", 'group']),
+    ...mapGetters("groups", ["groups", 'group', 'isEditMode']),
   },
   created() {
     this.fetchGroups();
   },
   methods: {
-    ...mapActions("groups", ["fetchGroups", 'setGroup']),
+    ...mapActions("groups", ["fetchGroups", 'setGroup', 'setEditMode']),
     showGroup(group) {
       this.setGroup(group);
     },
     initGroup() {
       this.setGroup({ name: ''});
+      this.setEditMode(true);
     },
   },
 };
