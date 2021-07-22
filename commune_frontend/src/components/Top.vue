@@ -21,6 +21,17 @@
     <v-dialog :value="group !== null">
       <TopDetailDialog v-if="group !== null" />
     </v-dialog>
+
+    <v-btn
+      class="mx-2"
+      fab
+      dark
+      color="indigo"
+    >
+      <v-icon dark>
+        mdi-plus
+      </v-icon>
+    </v-btn>
   </div>
   
 </template>
