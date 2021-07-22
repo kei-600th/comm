@@ -40,8 +40,8 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import GroupDetailDialog from './GroupDetailDialog';
-import GroupFormDialog from './GroupFormDialog';
+import GroupDetailDialog from '../groups/GroupDetailDialog';
+import GroupFormDialog from '../groups/GroupFormDialog';
 
 export default {
   name: "Group",

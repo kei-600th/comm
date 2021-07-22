@@ -22,8 +22,8 @@ import { mapGetters, mapActions } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
 
-import DescriptionForm from './DescriptionForm';
-import WordForm from './WordForm';
+import DescriptionForm from '../forms/DescriptionForm';
+import WordForm from '../forms/WordForm';
 
 export default {
   name: 'GroupFormDialog',
