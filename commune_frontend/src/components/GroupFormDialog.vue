@@ -51,7 +51,7 @@ export default {
     this.word = this.group.word;
   },
   methods: {
-    ...mapActions('groups', ['setGroup', 'setEditMode', 'createGroup']),
+    ...mapActions('groups', ['setGroup', 'setEditMode', 'createGroup', 'updateGroup']),
     closeDialog() {
       this.setEditMode(false);
       this.setGroup(null);
@@ -61,11 +61,16 @@ export default {
         return
       }
       const params = {
+        ...this.group,
         name: this.name,
         description: this.description,
         word: this.word,
       };
-      this.createGroup(params);
+      if (params.id) {
+        this.updateGroup(params);
+      } else {
+        this.createGroup(params);
+      }
       this.closeDialog();
     },
   },
