@@ -13,18 +13,18 @@
         </v-btn>
       </v-app-bar>
 
-      <Top />
+      <Group />
     </v-app>
   </div>
 </template>
 
 <script>
-import Top from "./components/Top.vue";
+import Group from "./components/Group.vue";
 
 export default {
   name: "App",
   components: {
-    Top,
+    Group,
   },
 };
 </script>

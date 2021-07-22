@@ -19,7 +19,7 @@
     </v-main>
 
     <v-dialog :value="group !== null">
-      <TopDetailDialog v-if="group !== null && !isEditMode" />
+      <GroupDetailDialog v-if="group !== null && !isEditMode" />
       <GroupFormDialog v-if="group !== null && isEditMode" />
     </v-dialog>
 
@@ -40,13 +40,13 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import TopDetailDialog from './TopDetailDialog';
+import GroupDetailDialog from './GroupDetailDialog';
 import GroupFormDialog from './GroupFormDialog';
 
 export default {
-  name: "Top",
+  name: "Group",
   components: {
-    TopDetailDialog,
+    GroupDetailDialog,
     GroupFormDialog,
   },
   data: () => ({
