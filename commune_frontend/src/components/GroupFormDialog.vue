@@ -11,6 +11,7 @@
         <DescriptionForm v-model="description" />
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
+      <v-btn @click="cancel">キャンセル</v-btn>
       <v-btn :disabled="isInvalid" @click="submit">保存</v-btn>
     </v-card-actions>
   </v-card>
@@ -72,6 +73,12 @@ export default {
         this.createGroup(params);
       }
       this.closeDialog();
+    },
+    cancel() {
+      this.setEditMode(false);
+      if (!this.group.id) {
+        this.setGroup(null);
+      }
     },
   },
 };
