@@ -11,18 +11,22 @@
         <DescriptionForm v-model="description" />
     </v-card-text>
     <v-card-actions class="d-flex justify-end">
-      <v-btn @click="submit">保存</v-btn>
+      <v-btn :disabled="isInvalid" @click="submit">保存</v-btn>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { validationMixin } from 'vuelidate';
+import { required } from 'vuelidate/lib/validators';
+
 import DescriptionForm from './DescriptionForm';
 import WordForm from './WordForm';
 
 export default {
   name: 'GroupFormDialog',
+  mixins: [validationMixin],
   components: {
     DescriptionForm,
     WordForm,
@@ -32,8 +36,14 @@ export default {
     description: '',
     word: '',
   }),
+  validations: {
+    name: { required },
+  },
   computed: {
     ...mapGetters('groups', ['group']),
+    isInvalid() {
+      return this.$v.$invalid;
+    },
   },
   methods: {
     ...mapActions('groups', ['setGroup', 'setEditMode', 'createGroup']),
@@ -42,6 +52,9 @@ export default {
       this.setGroup(null);
     },
     submit() {
+      if (this.isInvalid) {
+        return
+      }
       const params = {
         name: this.name,
         description: this.description,
