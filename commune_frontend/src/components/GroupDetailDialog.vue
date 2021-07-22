@@ -1,5 +1,8 @@
 <template>
   <v-card>
+    <v-btn icon @click="closeDialog">
+      <v-icon size="20px">mdi-close</v-icon>
+    </v-btn>
     <h1>グループ詳細</h1>
     <p>name: {{ group.name }}</p>
     <p>description: {{ group.description }}</p>
@@ -26,6 +29,9 @@ export default {
     ...mapActions("groups", ["fetchGroups", 'setGroup']),
     showGroup(group) {
       this.setGroup(group);
+    },
+    closeDialog() {
+      this.setGroup(null);
     },
   },
 };
