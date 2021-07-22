@@ -19,14 +19,7 @@
     </v-main>
 
     <v-dialog :value="group !== null">
-      <div v-if="group !== null">
-        <v-card>
-          <h1>グループ詳細</h1>
-          <p>name: {{ group.name }}</p>
-          <p>description: {{ group.description }}</p>
-          <p>word: {{ group.word }}</p>
-        </v-card>
-      </div>
+      <TopDetailDialog v-if="group !== null" />
     </v-dialog>
   </div>
   
@@ -34,9 +27,13 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import TopDetailDialog from './TopDetailDialog';
 
 export default {
   name: "Top",
+  components: {
+    TopDetailDialog,
+  },
   data: () => ({
   }),
   computed: {
