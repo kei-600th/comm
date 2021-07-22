@@ -20,6 +20,7 @@
 
     <v-dialog :value="group !== null">
       <TopDetailDialog v-if="group !== null" />
+      <GroupFormDialog v-if="group !== null" />
     </v-dialog>
 
     <v-btn
@@ -27,6 +28,7 @@
       fab
       dark
       color="indigo"
+      @click="initGroup"
     >
       <v-icon dark>
         mdi-plus
@@ -39,11 +41,13 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import TopDetailDialog from './TopDetailDialog';
+import GroupFormDialog from './GroupFormDialog';
 
 export default {
   name: "Top",
   components: {
     TopDetailDialog,
+    GroupFormDialog,
   },
   data: () => ({
   }),
@@ -57,6 +61,9 @@ export default {
     ...mapActions("groups", ["fetchGroups", 'setGroup']),
     showGroup(group) {
       this.setGroup(group);
+    },
+    initGroup() {
+      this.setGroup({ name: ''});
     },
   },
 };
