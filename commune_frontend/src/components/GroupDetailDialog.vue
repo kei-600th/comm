@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-actions class="d-flex justify-end pa-2">
-      <v-btn icon>
+      <v-btn icon @click="edit">
         <v-icon size="20px">mdi-pencil-outline</v-icon>
       </v-btn>
       <v-btn icon @click="del">
@@ -34,7 +34,7 @@ export default {
     this.fetchGroups();
   },
   methods: {
-    ...mapActions("groups", ["fetchGroups", 'setGroup', 'deleteGroup']),
+    ...mapActions("groups", ["fetchGroups", 'setGroup', 'deleteGroup', 'setEditMode']),
     showGroup(group) {
       this.setGroup(group);
     },
@@ -43,6 +43,9 @@ export default {
     },
     del() {
       this.deleteGroup(this.group.id);
+    },
+    edit() {
+      this.setEditMode(true);
     },
   },
 };

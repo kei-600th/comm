@@ -45,6 +45,11 @@ export default {
       return this.$v.$invalid;
     },
   },
+  created() {
+    this.name = this.group.name;
+    this.description = this.group.description;
+    this.word = this.group.word;
+  },
   methods: {
     ...mapActions('groups', ['setGroup', 'setEditMode', 'createGroup']),
     closeDialog() {
