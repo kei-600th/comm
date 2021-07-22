@@ -18,8 +18,15 @@
       </v-container>
     </v-main>
 
-    <v-dialog :value="dialogMessage !== ''">
-      <h1>{{ dialogMessage }}</h1>
+    <v-dialog :value="group !== null">
+      <div v-if="group !== null">
+        <v-card>
+          <h1>グループ詳細</h1>
+          <p>name: {{ group.name }}</p>
+          <p>description: {{ group.description }}</p>
+          <p>word: {{ group.word }}</p>
+        </v-card>
+      </div>
     </v-dialog>
   </div>
   
@@ -31,18 +38,17 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Top",
   data: () => ({
-    dialogMessage: '',
   }),
   computed: {
-    ...mapGetters("groups", ["groups"]),
+    ...mapGetters("groups", ["groups", 'group']),
   },
   created() {
     this.fetchGroups();
   },
   methods: {
-    ...mapActions("groups", ["fetchGroups"]),
+    ...mapActions("groups", ["fetchGroups", 'setGroup']),
     showGroup(group) {
-      this.dialogMessage = group.name
+      this.setGroup(group);
     },
   },
 };
