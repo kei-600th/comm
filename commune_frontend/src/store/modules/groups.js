@@ -18,6 +18,8 @@ const mutations = {
   setGroups: (state, groups) => (state.groups = groups),
   appendGroup: (state, group) => (state.groups = [...state.groups, group]),
   setGroup: (state, group) => (state.group = group),
+  removeGroup: (state, group) => (state.groups = state.groups.filter(e => e.id !== group.id)),
+  resetGroup: state => (state.group = null),
   setEditMode: (state, bool) => (state.isEditMode = bool),
 };
 
@@ -35,6 +37,11 @@ const actions = {
   async createGroup({ commit }, group) {
     const response = await axios.post(`${apiUrl}/groups`, group);
     commit('appendGroup', response.data);
+  },
+  async deleteGroup({ commit }, id) {
+    const response = await axios.delete(`${apiUrl}/groups/${id}`);
+    commit('removeGroup', response.data);
+    commit('resetGroup');
   },
 };
 
