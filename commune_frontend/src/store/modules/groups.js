@@ -16,6 +16,7 @@ const getters = {
 
 const mutations = {
   setGroups: (state, groups) => (state.groups = groups),
+  appendGroup: (state, group) => (state.groups = [...state.groups, group]),
   setGroup: (state, group) => (state.group = group),
   setEditMode: (state, bool) => (state.isEditMode = bool),
 };
@@ -30,6 +31,10 @@ const actions = {
   },
   setEditMode({ commit }, bool) {
     commit('setEditMode', bool)
+  },
+  async createGroup({ commit }, group) {
+    const response = await axios.post(`${apiUrl}/groups`, group);
+    commit('appendGroup', response.data);
   },
 };
 
